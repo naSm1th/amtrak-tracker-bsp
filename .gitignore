@@ -1,0 +1,5 @@
+# exclude the build directory
+build
+
+# exclude editor directories
+.vscode
