@@ -32,7 +32,7 @@
 
 		fdt {
 			description = "device tree";
-			data = /incbin/("./allwinner/suniv-f1c100s-licheepi-nano.dtb");
+			data = /incbin/("./amtrak-midwest-test.dtb");
 			type = "flat_dt";
 			arch = "arm";
 			compression = "none";
