@@ -31,6 +31,13 @@
 	};
 };
 
+&pio {
+	spi1_pc_pins: spi1-pc-pins {
+		pins = "PE8", "PE9";
+		function = "spi1";
+	};
+};
+
 &spi0 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&spi0_pc_pins>;
@@ -39,9 +46,23 @@
 	flash@0 {
 		#address-cells = <1>;
 		#size-cells = <1>;
-		compatible = "winbond,w25q128", "jedec,spi-nor";
+		compatible = "xtx,xt25f128", "jedec,spi-nor";
 		reg = <0>;
 		spi-max-frequency = <60000000>;
+	};
+};
+
+&spi1 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&spi1_pc_pins>;
+	status = "okay";
+
+	spileds@0 {
+		#address-cells = <1>;
+		#size-cells = <0>;
+		compatible = "rohm,dh2228fv";
+		reg = <0>;
+		spi-max-frequency = <25000000>;
 	};
 };
 
