@@ -33,7 +33,7 @@
 
 &pio {
 	spi1_pc_pins: spi1-pc-pins {
-		pins = "PE8", "PE9";
+		pins = "PE7", "PE8", "PE9", "PE10";
 		function = "spi1";
 	};
 };
@@ -62,7 +62,7 @@
 		#size-cells = <0>;
 		compatible = "rohm,dh2228fv";
 		reg = <0>;
-		spi-max-frequency = <25000000>;
+		spi-max-frequency = <1000000>;
 	};
 };
 
