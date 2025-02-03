@@ -66,6 +66,13 @@
 	};
 };
 
+&mmc0 {
+	vmmc-supply = <&reg_vcc3v3>;
+	bus-width = <4>;
+	broken-cd;
+	status = "okay";
+};
+
 &otg_sram {
 	status = "okay";
 };
