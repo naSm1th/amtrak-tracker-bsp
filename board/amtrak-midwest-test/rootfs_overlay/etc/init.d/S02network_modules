@@ -1,0 +1,33 @@
+#!/bin/sh
+#
+# Start the network....
+#
+
+case "$1" in
+  start)
+    echo -n "Power cycling ESP32 module..."
+    gpioset -t 0 -p 250 -c 0 140=0 # PE12
+    gpioset -t 0 -p 250 -c 0 140=1 # PE12
+    echo " done."
+    echo -n "Loading modules..."
+    modprobe esp32_sdio
+    echo " done."
+    echo -n "Setting wireless regulatory zone to US..."
+    iw reg set US
+    echo " done."
+    ;;
+  stop)
+    echo -n "Removing modules..."
+    modprobe -r esp32_sdio
+    echo " done."
+    ;;
+  restart|reload)
+    "$0" stop
+    "$0" start
+    ;;
+  *)
+    echo $"Usage: $0 {start|stop|restart}"
+    exit 1
+esac
+
+exit $?
