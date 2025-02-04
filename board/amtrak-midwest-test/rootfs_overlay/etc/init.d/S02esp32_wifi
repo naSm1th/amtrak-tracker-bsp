@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Start the network....
+# Handles low-level ESP32 wifi initialization.
 #
 
 case "$1" in
@@ -9,7 +9,7 @@ case "$1" in
     gpioset -t 0 -p 250 -c 0 140=0 # PE12
     gpioset -t 0 -p 250 -c 0 140=1 # PE12
     echo " done."
-    echo -n "Loading modules..."
+    echo -n "Loading module..."
     modprobe esp32_sdio
     echo " done."
     echo -n "Setting wireless regulatory zone to US..."
