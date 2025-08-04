@@ -1,10 +1,16 @@
-#!/bin/sh
+#!/bin/bash
 
-mkdir build
-cd build
-make defconfig BR2_DEFCONFIG=../amtrak-midwest-test-br2-defconfig O=$PWD -C ../buildroot/
+(return 0 2>/dev/null) && sourced=1 || sourced=0
 
-echo "\n\nEnvironment setup in build directory.\n"
-echo "To build:"
-echo "\tcd build"
-echo "\tmake"
+mkdir -p dl
+
+make amtrak_midwest_test_defconfig > /dev/null
+
+cd output/amtrak_midwest_test
+
+echo -e "\nEnvironment setup in output/amtrak_midwest_test directory.\n"
+echo -e "To build:"
+if [ "$sourced" -eq "0" ]; then
+    echo -e "\tcd output/amtrak_midwest_test"
+fi
+echo -e "\tmake"

@@ -1,5 +1,8 @@
-# exclude the build directory
-build
+# exclude the downloads directory
+dl
+
+# exclude the output directory
+output
 
 # exclude editor directories
 .vscode
