@@ -2,13 +2,13 @@
   description = "Example flake environment for build buildroot projects";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/release-24.05";
   };
 
   outputs = inputs@{ flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [ ];
-      systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin" ];
+      systems = [ "x86_64-linux" ];
       perSystem = { config, self', inputs', pkgs, system, ... }: {
         devShells.default = (pkgs.buildFHSUserEnv {
           name = "buildroot";
@@ -21,7 +21,7 @@
               pkg-config
               unzip
               wget
-              pkgsCross.aarch64-multiplatform.gccStdenv.cc
+              libxcrypt
             ] ++ pkgs.linux.nativeBuildInputs);
         }).env;
       };
