@@ -23,7 +23,7 @@ jobs:
       with:
         github_access_token: ${{ secrets.GITHUB_TOKEN }}
 
-    - uses: nicknovitski/nix-develop@v1
+    - uses: nicknovitski/nix-develop@v1.2.1
 
     - name: Check nix flake
       run: nix flake check
