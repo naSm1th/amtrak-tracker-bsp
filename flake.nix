@@ -51,6 +51,7 @@
             # Since the var is set to OBJCOPY=objcopy the buildroot provided
             # CROSS_COMPILE path is ignored hence the script is using the wrong objcopy
             unset $OBJCOPY
+            source setup.sh
             exec bash
           '';
         }).env;
