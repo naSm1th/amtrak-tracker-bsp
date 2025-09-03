@@ -6,7 +6,7 @@
  */
 
 /dts-v1/;
-#include "allwinner/suniv-f1c100s.dtsi"
+#include "suniv-f1c100s.dtsi"
 
 #include <dt-bindings/gpio/gpio.h>
 
