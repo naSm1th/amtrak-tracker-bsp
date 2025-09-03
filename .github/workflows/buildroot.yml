@@ -18,7 +18,7 @@ jobs:
 
     - name: Fix AppArmor permissions
       run: sudo cp .github/assets/apparmor/bwrap /etc/apparmor.d/bwrap && \
-           sudo systemctl restart apparmor.service
+           systemctl restart apparmor.service
   
     - uses: cachix/install-nix-action@v25
       with:
