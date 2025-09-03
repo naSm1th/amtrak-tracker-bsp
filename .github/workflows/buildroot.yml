@@ -17,8 +17,7 @@ jobs:
         submodules: recursive
 
     - name: Fix AppArmor permissions
-      run: sudo cp .github/assets/apparmor/bwrap /etc/apparmor.d/bwrap && \
-           systemctl restart apparmor.service
+      run: sudo cp .github/assets/apparmor/bwrap /etc/apparmor.d/bwrap && sudo systemctl reload apparmor.service
   
     - uses: cachix/install-nix-action@v25
       with:
