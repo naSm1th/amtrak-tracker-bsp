@@ -15,18 +15,13 @@ jobs:
     - uses: actions/checkout@v4
       with:
         submodules: recursive
-    
-    - name: Fix AppArmor permissions
-      run: sudo cp .github/assets/apparmor/bwrap /etc/apparmor.d/bwrap && sudo apparmor_parser /etc/apparmor.d/bwrap && sudo service apparmor restart
-  
+
     - uses: cachix/install-nix-action@v31
       with:
         github_access_token: ${{ secrets.GITHUB_TOKEN }}
-
-    - uses: nicknovitski/nix-develop@v1.2.1
 
     - name: Check nix flake
       run: nix flake check
 
     - name: Build image
-      run: cd output/amtrak_midwest_test && make
+      run: nix develop --command make
