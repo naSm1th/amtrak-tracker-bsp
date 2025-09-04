@@ -22,6 +22,9 @@ jobs:
 
     - name: Check nix flake
       run: nix flake check
+    
+    - name: Fix permisions
+      run: sudo sysctl kernel.unprivileged_userns_clone=1
 
     - name: Build image
       run: nix develop --command make
