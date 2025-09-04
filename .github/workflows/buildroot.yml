@@ -17,7 +17,7 @@ jobs:
         submodules: recursive
 
     - name: Fix AppArmor permissions
-      run: sudo apt install apparmor-profiles && sudo ln -s /usr/share/apparmor/extra-profiles/bwrap-userns-restrict /etc/apparmor.d/bwrap && sudo apparmor_parser /etc/apparmor.d/bwrap
+      run: sudo cp .github/assets/apparmor/bwrap /etc/apparmor.d/bwrap && sudo apparmor_parser /etc/apparmor.d/bwrap
   
     - uses: cachix/install-nix-action@v31
       with:
