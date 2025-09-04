@@ -15,6 +15,9 @@ jobs:
     - uses: actions/checkout@v4
       with:
         submodules: recursive
+    
+    - name: Disable AppArmor on the GitHub runner
+      uses: cisagov/action-disable-apparmor@437d94f26a2e4bf8c03acfb500a6afc688b497db # v1.0.0
 
     - uses: cachix/install-nix-action@v31
       with:
@@ -22,9 +25,6 @@ jobs:
 
     - name: Check nix flake
       run: nix flake check
-    
-    - name: Fix permisions
-      run: sudo sysctl kernel.unprivileged_userns_clone=1
 
     - name: Build image
       run: nix develop --command make
