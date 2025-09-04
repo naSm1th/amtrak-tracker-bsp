@@ -20,7 +20,7 @@ jobs:
       uses: cisagov/action-disable-apparmor@437d94f26a2e4bf8c03acfb500a6afc688b497db # v1.0.0
     
     - name: Enable non-priveleged user namespaces in kernel
-      run: sudo sysctl kernel.unprivileged_userns_clone=1
+      run: sudo sysctl -w kernel.unprivileged_userns_clone=1
 
     - uses: cachix/install-nix-action@v31
       with:
