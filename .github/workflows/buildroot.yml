@@ -22,12 +22,12 @@ jobs:
     - name: Enable non-priveleged user namespaces in kernel
       run: sudo sysctl -w kernel.unprivileged_userns_clone=1
 
-    - name: Add setuid bit
-      run: sudo chmod u+s /usr/bin/bwrap
-
     - uses: cachix/install-nix-action@v31
       with:
         github_access_token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Add setuid bit
+      run: sudo chmod u+s /usr/bin/bwrap
 
     - name: Check nix flake
       run: nix flake check
