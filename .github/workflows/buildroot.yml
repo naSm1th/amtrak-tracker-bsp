@@ -26,9 +26,6 @@ jobs:
       with:
         github_access_token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Add setuid bit
-      run: sudo chmod u+s /usr/bin/bwrap
-
     - name: Check nix flake
       run: nix flake check
 
