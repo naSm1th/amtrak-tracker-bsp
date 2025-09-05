@@ -30,4 +30,4 @@ jobs:
       run: nix flake check
 
     - name: Build image
-      run: nix develop --command make --option sandbox false
+      run: sudo nix develop --command make --option sandbox false
