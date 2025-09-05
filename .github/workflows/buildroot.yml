@@ -34,6 +34,9 @@ jobs:
 
     - name: Check nix flake
       run: nix flake check
+    
+    - name: Is nix-daemon even running????
+      run: sudo systemctl status nix-daemon.service
 
     - name: Build image
       run: nix develop --command make --option sandbox false
