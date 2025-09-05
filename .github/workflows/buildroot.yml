@@ -27,9 +27,6 @@ jobs:
         install_options: --no-daemon
         github_access_token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Add setuid flag
-      run: sudo chmod u+s $(which bwrap)
-
     - name: Check nix flake
       run: nix flake check
 
