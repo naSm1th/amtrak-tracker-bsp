@@ -22,10 +22,12 @@ jobs:
     - name: Enable non-priveleged user namespaces in kernel
       run: sudo sysctl -w kernel.unprivileged_userns_clone=1
 
-    - uses: cachix/install-nix-action@v31
-      with:
-        install_options: --no-daemon
-        github_access_token: ${{ secrets.GITHUB_TOKEN }}
+    # - uses: cachix/install-nix-action@v31
+    #   with:
+    #     install_options: --no-daemon
+    #     github_access_token: ${{ secrets.GITHUB_TOKEN }}
+
+    - uses: DeterminateSystems/nix-installer-action@main
 
     - name: Check nix flake
       run: nix flake check
