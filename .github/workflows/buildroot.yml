@@ -24,6 +24,7 @@ jobs:
 
     - uses: cachix/install-nix-action@v31
       with:
+        install_options: --no-daemon
         github_access_token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Add setuid flag
