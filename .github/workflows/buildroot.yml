@@ -22,6 +22,12 @@ jobs:
     - name: Enable non-priveleged user namespaces in kernel
       run: sudo sysctl -w kernel.unprivileged_userns_clone=1
 
+    - name: Check permissions
+      run: sysctl kernel.unprivileged_userns_clone 
+    
+    - name: Check max namespaces
+      run: sysctl user.max_user_namespaces
+
     - uses: cachix/install-nix-action@v31
       with:
         github_access_token: ${{ secrets.GITHUB_TOKEN }}
@@ -30,4 +36,4 @@ jobs:
       run: nix flake check
 
     - name: Build image
-      run: sudo nix develop --command make --option sandbox false
+      run: nix develop --command make --option sandbox false
