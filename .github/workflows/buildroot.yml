@@ -12,12 +12,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout
+      uses: actions/checkout@v4
       with:
         submodules: recursive
+    
+    - name: Install Nix
+      uses: cachix/install-nix-action@v31
+      with:
+        github_access_token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Configure environment
-      run: source setup.sh
+    - name: Check Nix flake
+      run: nix flake check
 
-    - name: Build image
-      run: cd output/amtrak_midwest_test && make
+    - name: Add AppArmor rule for bwrap using wildcard path (because Nix paths are silly)
+      run: sudo cp .github/assets/apparmor/bwrap /etc/apparmor.d/bwrap && sudo systemctl reload apparmor
+
+    - name: Enter the nix develop shell
+      uses: nicknovitski/nix-develop@v1.2.1
+
+    - name: Setup environment and build
+      run: source setup.sh && make
