@@ -28,6 +28,26 @@ jobs:
     - name: Add AppArmor rule for bwrap using wildcard path (because Nix paths are silly)
       run: sudo cp .github/assets/apparmor/bwrap /etc/apparmor.d/bwrap && sudo systemctl reload apparmor
 
+    - name: Cache Code
+      uses: actions/cache@v4
+      with:
+        path: dl
+        key: ${{ github.workflow }}-downloads-${{ hashFiles('configs/amtrak_midwest_test_defconfig') }}
+        restore-keys:
+          ${{ github.workflow }}-downloads-
+    - name: Cache Compiled Code
+      uses: actions/cache@v4
+      with:
+        path: |
+          output/amtrak_midwest_test/build
+          output/amtrak_midwest_test/host
+          output/amtrak_midwest_test/target
+          output/amtrak_midwest_test/staging
+          output/amtrak_midwest_test/Makefile
+        key: ${{ github.workflow }}-bin-${{runner.arch}}-${{ hashFiles('configs/amtrak_midwest_test_defconfig') }}
+        restore-keys:
+          ${{ github.workflow }}-bin-${{runner.arch}}-
+
     - name: Enter the nix develop shell
       uses: nicknovitski/nix-develop@v1.2.1
 
