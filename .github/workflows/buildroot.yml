@@ -40,6 +40,10 @@ jobs:
       with:
         path: |
           output/amtrak_midwest_test/build
+          output/amtrak_midwest_test/host
+          output/amtrak_midwest_test/target
+          output/amtrak_midwest_test/staging
+          output/amtrak_midwest_test/Makefile
         key: ${{ github.workflow }}-bin-${{runner.arch}}-${{ hashFiles('configs/amtrak_midwest_test_defconfig') }}
         restore-keys:
           ${{ github.workflow }}-bin-${{runner.arch}}-
