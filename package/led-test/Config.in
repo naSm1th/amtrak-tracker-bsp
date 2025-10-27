@@ -1,0 +1,4 @@
+config BR2_PACKAGE_LED_TEST
+    bool "led-test"
+    help
+      A simple test application for APA102 LEDs
