@@ -2,7 +2,7 @@
   description = "Example flake environment for build buildroot projects";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
   };
 
   outputs = inputs@{ flake-parts, ... }:
@@ -14,7 +14,8 @@
           name = "buildroot";
           targetPkgs = pkgs: (with pkgs;
             [
-              (lib.hiPrio gcc)
+              (lib.hiPrio gcc12)
+              (lib.hiPrio gcc12Stdenv)
               bashInteractive
               bc
               binutils
@@ -28,7 +29,6 @@
               file
               findutils
               flock
-              gcc
               glib # not mentioned; not sure if necessary
               glibc # transitively mentioned: debian build-essential
               gnumake
