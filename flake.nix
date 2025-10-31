@@ -45,6 +45,7 @@
               unzip
               wget
               which
+              sunxi-tools
             ] ++ pkgs.linux.nativeBuildInputs);
           shellHook = ''
             # The host-uboot-tools package uses objcopy from the shells OBJCOPY var
