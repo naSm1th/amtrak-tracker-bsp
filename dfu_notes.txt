@@ -1,0 +1,3 @@
+env set dfu_alt_info "sf 0:0:2000000=image raw 100000 1f00000"
+
+dfu 0 sf 

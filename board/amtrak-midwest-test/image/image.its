@@ -19,17 +19,6 @@
 			};
 		};
 
-		ramdisk {
-			description = "rootfs";
-			data = /incbin/("./rootfs.cpio.gz");
-			type = "ramdisk";
-			arch = "arm";
-			os = "linux";
-			hash@1 {
-				algo = "sha1";
-			};
-		};
-
 		fdt {
 			description = "device tree";
 			data = /incbin/("./allwinner/amtrak-midwest-test.dtb");
@@ -51,7 +40,6 @@
 		amtrak-tracker {
 			description = "amtrak tracker default configuration";
 			kernel = "kernel";
-			ramdisk = "ramdisk";
 			fdt = "fdt";
 		};
 	};

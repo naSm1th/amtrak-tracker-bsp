@@ -1,9 +1,10 @@
 #!/bin/sh
 # post-image.sh - build .itb image and disk image
 
-set -e
+# set -e
 
 BOARD_DIR="$( dirname "${0}" )"
+OVERLAYFSDATA_DIR="$( dirname "${0}" )/../overlayfs_data"
 MKIMAGE="${HOST_DIR}/bin/mkimage"
 IMAGE_ITS="image.its"
 OUTPUT_NAME="image.itb"
@@ -19,8 +20,9 @@ cd "${BINARIES_DIR}"
 rm ${IMAGE_ITS}
 
 GENIMAGE="${HOST_DIR}/bin/genimage"
-DISK_IMAGE_CFG="disk_image.cfg"
-DISK_IMAGE_NAME="disk.img"
+UPDATE_IMAGE_CFG="update_image.cfg"
+UPDATE_IMAGE_NAME="update.img"
 
-cp "${BOARD_DIR}/${DISK_IMAGE_CFG}" "${BINARIES_DIR}"
-"${GENIMAGE}" --config ${DISK_IMAGE_CFG} --inputpath ${BINARIES_DIR}
+cp "${BOARD_DIR}/${UPDATE_IMAGE_CFG}" "${BINARIES_DIR}"
+cp -r "${OVERLAYFSDATA_DIR}" "${BINARIES_DIR}/overlayfs_data"
+"${GENIMAGE}" --config ${UPDATE_IMAGE_CFG} --inputpath ${BINARIES_DIR}
