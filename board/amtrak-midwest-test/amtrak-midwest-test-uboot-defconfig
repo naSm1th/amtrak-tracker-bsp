@@ -14,8 +14,10 @@ CONFIG_FIT_VERBOSE=y
 # CONFIG_LEGACY_IMAGE_FORMAT is not set
 # CONFIG_DISTRO_DEFAULTS is not set
 CONFIG_SPI_BOOT=y
+CONFIG_USE_BOOTARGS=y
+CONFIG_BOOTARGS="console=ttyS0,115200 panic=5 rootwait root=/dev/mtdblock2 ro rootfstype=squashfs init=/etc/preinit"
 CONFIG_USE_BOOTCOMMAND=y
-CONFIG_BOOTCOMMAND="sf probe 0:0 60000000 0; setenv mtdparts mtdparts=nor1:512K(uboot),14M(fitimage); setenv bootargs; ubi part fitimage; ubi read 0x80000000 fitimage; bootm 0x80000000"
+CONFIG_BOOTCOMMAND="sf probe 0:0 60000000 0; sf read 0x80008000 0x100000 0x800000; bootm 0x80008000"
 CONFIG_HUSH_PARSER=y
 CONFIG_CMD_BOOTZ=y
 # CONFIG_BOOTM_NETBSD is not set
