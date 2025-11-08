@@ -1,0 +1,7 @@
+config BR2_PACKAGE_WIFI_CONNECT
+    bool "wifi-connect"
+    depends on BR2_PACKAGE_HOST_RUSTC_TARGET_ARCH_SUPPORTS
+    depends on BR2_PACKAGE_NETWORK_MANAGER
+ 	  select BR2_PACKAGE_HOST_RUSTC
+    help
+      An application that provides a captive portal mechanism to provision a device to a wifi network.

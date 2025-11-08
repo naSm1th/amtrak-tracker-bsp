@@ -1,1 +1,2 @@
 source "$BR2_EXTERNAL_AMTRAK_MIDWEST_TEST_PATH/package/amtrak-tracker-led-tester/Config.in"
+source "$BR2_EXTERNAL_AMTRAK_MIDWEST_TEST_PATH/package/wifi-connect/Config.in"
