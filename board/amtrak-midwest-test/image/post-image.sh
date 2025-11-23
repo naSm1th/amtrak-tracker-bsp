@@ -25,4 +25,5 @@ UPDATE_IMAGE_NAME="update.img"
 
 cp "${BOARD_DIR}/${UPDATE_IMAGE_CFG}" "${BINARIES_DIR}"
 cp -r "${OVERLAYFSDATA_DIR}" "${BINARIES_DIR}"
+mkdir -p "${BINARIES_DIR}/overlayfs_data/work"
 "${GENIMAGE}" --config ${UPDATE_IMAGE_CFG} --inputpath ${BINARIES_DIR}
