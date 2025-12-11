@@ -14,8 +14,8 @@
           name = "buildroot";
           targetPkgs = pkgs: (with pkgs;
             [
-              (lib.hiPrio gcc12)
-              (lib.hiPrio gcc12Stdenv)
+              (lib.hiPrio gcc14)
+              (lib.hiPrio gcc14Stdenv)
               bashInteractive
               bc
               binutils
