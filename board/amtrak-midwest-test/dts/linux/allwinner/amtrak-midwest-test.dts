@@ -46,9 +46,36 @@
 	flash@0 {
 		#address-cells = <1>;
 		#size-cells = <1>;
-		compatible = "xtx,xt25f128", "jedec,spi-nor";
+		compatible = "jedec,spi-nor";
 		reg = <0>;
 		spi-max-frequency = <60000000>;
+		partitions {
+			compatible = "fixed-partitions";
+			#address-cells = <1>;
+			#size-cells = <1>;
+
+			partition@0 {
+				label = "u-boot";
+				reg = <0x000000 0x100000>;
+				read-only;
+			};
+
+			partition@100000 {
+				label = "fitimage";
+				reg = <0x100000 0xB00000>;
+				read-only;
+			};
+
+			partition@C00000 {
+				label = "rootfs";
+				reg = <0xC00000 0x1000000>;
+			};
+			
+			partition@1C00000 {
+				label = "overlayfs";
+				reg = <0x1C00000 0x300000>;
+			};
+		};
 	};
 };
 
