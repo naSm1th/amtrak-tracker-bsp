@@ -14,8 +14,8 @@
           name = "buildroot";
           targetPkgs = pkgs: (with pkgs;
             [
-              (lib.hiPrio gcc12)
-              (lib.hiPrio gcc12Stdenv)
+              (lib.hiPrio gcc14)
+              (lib.hiPrio gcc14Stdenv)
               bashInteractive
               bc
               binutils
@@ -46,6 +46,7 @@
               wget
               which
               sunxi-tools
+              dfu-util
             ] ++ pkgs.linux.nativeBuildInputs);
           shellHook = ''
             # The host-uboot-tools package uses objcopy from the shells OBJCOPY var
