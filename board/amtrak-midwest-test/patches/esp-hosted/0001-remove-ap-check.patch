@@ -1,0 +1,15 @@
+diff -ruN esp-hosted-1.0.6-orig/esp_hosted_ng/host/esp_cfg80211.c esp-hosted-1.0.6/esp_hosted_ng/host/esp_cfg80211.c
+--- esp-hosted-1.0.6-orig/esp_hosted_ng/host/esp_cfg80211.c	2026-11-10 22:01:10.300858693 -0600
++++ esp-hosted-1.0.6/esp_hosted_ng/host/esp_cfg80211.c	2026-11-10 22:09:20.215545316 -0600
+@@ -1287,9 +1287,9 @@
+ 	set_wiphy_dev(wiphy, esp_dev->dev);
+ 
+ 	wiphy->interface_modes = BIT(NL80211_IFTYPE_STATION);
+-#ifdef CONFIG_AP_MODE
++// #ifdef CONFIG_AP_MODE
+ 	wiphy->interface_modes |= BIT(NL80211_IFTYPE_AP);
+-#endif
++// #endif
+ 	wiphy->bands[NL80211_BAND_2GHZ] = &esp_wifi_bands_2ghz;
+ 	if (adapter->chipset == ESP_FIRMWARE_CHIP_ESP32C5) {
+ 		wiphy->bands[NL80211_BAND_5GHZ] = &esp_wifi_bands_5ghz;
